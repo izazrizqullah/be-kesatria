@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const rateLimiter = require("express-rate-limit");
 const { PORT } = process.env;
+const routes = require("./routes");
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -24,6 +25,7 @@ app.use(
     message: "Too many request, try again later",
   })
 );
+app.use(routes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to our API!");

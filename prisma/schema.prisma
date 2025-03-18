@@ -2,3 +2,18 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+    id          Int @id @default(autoincrement())
+    name        String?
+    address     String?
+    telp        String?
+    createdAt   DateTime @default(now())
+}
+
+
+
